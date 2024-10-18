@@ -94,21 +94,6 @@ def put_usuario_por_id(id):
         return {"erro":f"erro ao atualizar usuário: {str(erro)}"}, 400
 
 
-# listar todas as bicicletas
-@app.route('/bikes', methods=['GET'])
-def get_all_bikes():
-
-    filtro = {}
-    projecao = {"_id" : 0}
-    dados_bikes = mongo.db.bikes.find(filtro, projecao)
-
-    resp = {
-        "bicicletas": list( dados_bikes )
-
-    }
-
-    return resp, 200
-
 
 # buscar bicicleta por id
 @app.route('/bikes/<id_bike>', methods=['GET'])
