@@ -9,7 +9,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 load_dotenv(".cred")
-app.config["MONGO_URI"] = os.getenv("MONGO_URI","localhost")
+app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 
 mongo = PyMongo(app)
 
