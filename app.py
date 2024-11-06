@@ -15,6 +15,10 @@ mongo = PyMongo(app)
 
 
 
+@app.route('/')
+def index():
+    return "API em funcionamento", 200
+
 
 @app.route('/usuario', methods=['POST'])
 def post_usuario():
@@ -150,6 +154,9 @@ def get_all_bikes():
     filtro = {}
     projecao = {"_id" : 0}
     dados_bikes = mongo.db.bikes.find(filtro, projecao)
+
+    bikes_list = list(dados_bikes)
+    print(bikes_list)  # Verifique se os dados estão sendo retornados
 
     resp = {
         "bicicletas": list( dados_bikes )
