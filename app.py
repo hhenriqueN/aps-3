@@ -14,7 +14,7 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://localhost")
 mongo = PyMongo(app)
 
 
-
+#rota raiz
 @app.route('/')
 def index():
     return "API em funcionamento", 200
@@ -155,15 +155,13 @@ def get_all_bikes():
     projecao = {"_id" : 0}
     dados_bikes = mongo.db.bikes.find(filtro, projecao)
 
-    bikes_list = list(dados_bikes)
-    print(bikes_list)  # Verifique se os dados estão sendo retornados
-
     resp = {
         "bicicletas": list( dados_bikes )
 
     }
 
     return resp, 200
+
 
 @app.route("/emprestimo", methods=["GET"])
 def get_todos_empretimos():
